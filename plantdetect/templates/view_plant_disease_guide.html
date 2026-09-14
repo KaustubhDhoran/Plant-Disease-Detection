@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+
+	<section class="logins py-5">
+		<div class="container py-xl-5 py-lg-3">
+			<div class="title-section mb-md-5 mb-4">
+				<h6 class="w3ls-title-sub"></h6>
+				<h4 class="w3ls-title text-uppercase text-dark font-weight-bold">Prevent Plant Disease follow below steps</h4><hr/>
+			</div>
+			<div class="login px-sm-12" style="width:100%">
+                        {% csrf_token %}
+                        <ul>
+                            <li>Follow Good Sanitation Practices.</li>
+                            <li>Fertilize to Keep Your Plants Healthy.</li>
+                            <li>Inspect Plants for Diseases Before You Bring Them Home.</li>
+                            <li>Allow the Soil to Warm Before Planting.</li>
+                            <li>Ensure a Healthy Vegetable Garden By Rotating Crops.</li>
+                            <li>Provide Good Air Circulation.</li>
+                            <li>Remove Diseased Stems and Foliage.</li>
+                        </ul>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

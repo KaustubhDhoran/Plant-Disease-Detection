@@ -1,0 +1,10 @@
+*.pt
+*.h5
+*.tflite
+media/
+Plant Disease Model/
+db.sqlite3
+.idea/
+.vscode/
+__pycache__/
+dataset/

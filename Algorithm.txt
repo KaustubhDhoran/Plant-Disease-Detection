@@ -1,0 +1,21 @@
+How to run the project
+
+Take a New Terminal 
+
+
+Run this to activate virtual environment        `` venv\Scripts\activate ``
+
+Run this to run project         ``  python manage.py runserver  ``
+
+how to open database in Sqlite
+
+Open Sqlite > Click on File > C:\Final Year Project\Plant Disease Detection
+
+
+Run this Query 
+
+to fetch all active users
+Select * from auth_users
+
+to fetch all history of plant project
+SELECT * from plantdetect_search_data;

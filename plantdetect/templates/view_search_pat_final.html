@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block body %}
+  <div class="container-fluid" style="width:90%; margin-top:10%">
+    <div class="container-fluid">
+      <h1 align="center" style="font-weight:bold; font-family : 'Monotype Corsiva'; color : #000000; margin-top:4%">
+        View Prediction Data
+      </h1>
+    </div><hr>
+
+    <table id="example" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Date</th>
+          <th>User Name</th>
+          <th>Input Image</th>
+          <th>Supplement Image</th>
+          <th>Plant Disease Name</th>
+          <th>Supplement Name</th>
+          <th>Accuracy</th>
+          <th>Buy Supplement Here</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data %}
+          <tr>
+            <td style="font-weight: bold; font-family: 'YourChosenFont', sans-serif;">{{ forloop.counter }}.</td>
+            <td style="font-weight: bold; font-family: 'YourChosenFont', sans-serif;">{{ i.created }}</td>
+            <td style="font-weight: bold; font-family: 'YourChosenFont', sans-serif;">
+              {{ i.patient.user.first_name }} {{ i.patient.user.last_name }}
+            </td>
+            <td>
+              {% if i.input_image %}
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#">
+                  <img src="{{ i.input_image.url }}" style="width:100px;height:100px">
+                </button>
+              {% else %}
+                No image available
+              {% endif %}
+            </td>
+            <td>
+                                  
+                <button type="button" class="btn btn" data-bs-toggle="modal" data-bs-target="#">
+                  <img src="{{i.supplement_image}}" style="width:100px;height:100px">
+                </button>
+
+              </td>
+            <td style="font-weight: bold; font-family: 'YourChosenFont', sans-serif; color: green;">
+              {{ i.disease_name }}
+            </td>
+            <td style="font-weight: bold; font-family: 'YourChosenFont', sans-serif; color: green;">
+              {{ i.supplement_name }}
+            </td>
+            <td style="font-weight: bold; font-family: 'YourChosenFont', sans-serif;">
+              {{ i.prediction_accuracy|floatformat:4 }}%
+            </td>
+            <td>
+              <a href="{{ i.buy_link }}" class="btn btn-dark submit" target="_blank">BUY NOW</a>
+            </td>
+            <td style="width:150px">
+              <a href="/delete_searched_final/{{ i.id }}" onclick="return confirm('Are you sure?')">
+                <button class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
